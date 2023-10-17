@@ -1,35 +1,22 @@
-const readline = require('readline');
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-let vitorias;
-let derrotas;
-rl.question('Digite o número de vitórias: ', (vitoriasInput) => {
-  vitorias = parseInt(vitoriasInput);
-  rl.question('Digite o número de derrotas: ', (derrotasInput) => {
-    derrotas = parseInt(derrotasInput);
-    const nivel = calcularNivel(vitorias);
-    console.log(`O Herói tem o saldo de ${vitorias} vitórias e está no nível de ${nivel}!`);
-    rl.close();
-  });
-});
-function calcularNivel(vitorias) {
-  if (vitorias < 10) {
-    return 'Ferro';
-  } else if (vitorias >= 11 && vitorias <= 20) {
-    return 'Bronze';
-  } else if (vitorias >= 21 && vitorias <= 50) {
-    return 'Prata';
-  } else if (vitorias >= 61 && vitorias <= 70) {
-    return 'Ouro';
-  } else if (vitorias >= 71 && vitorias <= 80) {
-    return 'Diamante';
-  } else if (vitorias >= 81 && vitorias <= 90) {
-    return 'Lendário';
-  } else if (vitorias >= 91 && vitorias <= 100) {
-    return 'Imortal';
-  } else {
-    return 'Nível Desconhecido';
-  }
+const vitorias = prompt("Digite o número de vitórias do personagem:");
+const derrotas = prompt("Digite o número de derrotas do personagem:");
+const vitoriasInt = parseInt(vitorias);
+const derrotasInt = parseInt(derrotas);
+const saldo = vitoriasInt - derrotasInt;
+let nivel = "Iniciante";
+if (vitoriasInt < 10) {
+  nivel = "Ferro";
+} else if (vitoriasInt >= 11 && vitoriasInt <= 20) {
+  nivel = "Bronze";
+} else if (vitoriasInt >= 21 && vitoriasInt <= 50) {
+  nivel = "Prata";
+} else if (vitoriasInt >= 51 && vitoriasInt <= 80) {
+  nivel = "Ouro";
+} else if (vitoriasInt >= 81 && vitoriasInt <= 90) {
+  nivel = "Diamante";
+} else if (vitoriasInt >= 91 && vitoriasInt <= 100) {
+  nivel = "Lendário";
+} else if (vitoriasInt >= 101) {
+  nivel = "Imortal";
 }
+console.log(`O Herói tem o saldo de ${saldo} vitórias e está no nível de ${nivel}!`);
